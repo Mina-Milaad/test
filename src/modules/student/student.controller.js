@@ -6,3 +6,9 @@ export const addStudent = catchError(async (req, res, next) => {
     await student.save();
     res.status(201).json({ message: "Student added successfully", student });
 })
+
+
+export const allStudents = catchError(async (req, res, next) => {
+    const students = await Student.find();
+    res.status(200).json({ message: "Students fetched successfully", students });
+})
