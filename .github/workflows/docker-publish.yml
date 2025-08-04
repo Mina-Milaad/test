@@ -29,15 +29,15 @@ jobs:
           push: true
           tags: mybyelias/test:latest
 
-          - name: 🚀 Deploy on remote server via SSH
-  uses: appleboy/ssh-action@v1.0.3
-  with:
-    host: ${{ secrets.SERVER_IP }}
-    username: ${{ secrets.SERVER_USERNAME }}
-    key: ${{ secrets.SERVER_SSH_KEY }}
-    script: |
-      docker pull mybyelias/test:latest
-      docker stop app || true
-      docker rm app || true
-      docker run -d --name app -p 80:5000 mybyelias/test:latest
+      - name: 🚀 Deploy on remote server via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            docker pull mybyelias/test:latest
+            docker stop app || true
+            docker rm app || true
+            docker run -d --name app -p 80:5000 mybyelias/test:latest
 
