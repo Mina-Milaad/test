@@ -18,10 +18,10 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - mongo_data_test:/data/db
+      - mongo_data:/data/db
     command: mongod --bind_ip_all
     restart: always
 
 volumes:
-  mongo_data_test:
+  mongo_data:
 
